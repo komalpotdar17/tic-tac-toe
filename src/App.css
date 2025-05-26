@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #fcd6f6, #d6e4f7);
+  margin: 0;
+  padding: 0;
+  color: black;
+}
+
+.app {
+  text-align: center;
+  padding: 20px;
+  min-height: 100vh;
+  max-width: 100vw;     
+  overflow-x: hidden;   
+  box-sizing: border-box;
+  margin: 0 auto;       
+  color: black;
+  background-color: transparent; 
+}
+
+
+.category-selection {
+  margin-bottom: 20px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  grid-template-rows: repeat(3, 80px);
+  gap: 10px;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.cell {
+  background: #ffffff;
+  border: 2px solid #e0c6f5;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+  color: black;
+}
+
+.cell:hover {
+  background: #f3d8ff;
+}
+
+.status, .winner {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #aa00aa;
+}
+
+.winner button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background: #87cefa;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.help {
+  margin-top: 30px;
+  background: #f0eaff;
+  padding: 15px;
+  border-radius: 10px;
+  width: fit-content;
+  margin-inline: auto;
+  text-align: left;
+  color: black;
+  border: 1px solid #dcbfff;
+}
+
+@media (max-width: 600px) {
+  .board {
+    grid-template-columns: repeat(3, 60px);
+    grid-template-rows: repeat(3, 60px);
+  }
+  .cell {
+    font-size: 1.5rem;
+  }
+}
