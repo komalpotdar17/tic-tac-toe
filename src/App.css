@@ -33,6 +33,12 @@ body.dark-mode {
   color: var(--text-dark);
 }
 
+.main-layout {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 2rem;
+}
+
 .toggle-theme {
   position: absolute;
   top: 1rem;
@@ -46,6 +52,12 @@ body.dark-mode {
   font-weight: bold;
 }
 
+.game-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 .game-title {
   font-size: 2.75rem;
   text-align: center;
@@ -57,7 +69,42 @@ body.dark-mode {
   color: var(--title-color);
 }
 
+.scoreboard-wrapper {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1000;
+}
 
+.scoreboard-toggle {
+  background-color: #00c3ff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.scoreboard {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin: 1rem;
+  max-width: 200px;
+}
+
+.dark-mode .scoreboard {
+  background-color: #333;
+  color: #fff;
+}
+
+
+.game-area {
+  flex: 1;
+}
 
 .app {
   text-align: center;

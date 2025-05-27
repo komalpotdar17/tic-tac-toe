@@ -20,6 +20,8 @@ function App() {
   const [winner, setWinner] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [scores, setScores] = useState({ 1: 0, 2: 0 });
+  const [showScoreboard, setShowScoreboard] = useState(false);
   const placeSoundRef = useRef(null);
   const winSoundRef = useRef(null);
 
@@ -101,7 +103,14 @@ function App() {
         board[b].player === board[c].player
       ) {
         if (!winner) { 
+          const winningPlayer = board[a].player;
           setWinner(board[a].player);
+          
+          setScores(prev => ({
+            ...prev,
+            [winningPlayer]: prev[winningPlayer] + 1
+          }));
+
           if (winSoundRef.current) {
             winSoundRef.current.play();
           }
@@ -122,11 +131,26 @@ function App() {
 
   return (
     <div className={`app ${isDark ? "dark" : ""}`}>
-        <button className="toggle-theme" onClick={toggleTheme}>
+      <div className={`scoreboard-wrapper ${showScoreboard ? "expanded" : ""}`}>
+         <button className="scoreboard-toggle" onClick={() => setShowScoreboard(!showScoreboard)}>
+           🏆 {showScoreboard ? "Hide Scoreboard" : "Show Scoreboard"}
+         </button>
+       {showScoreboard && (
+         <div className="scoreboard">
+            <h2>🏆 Scoreboard</h2>
+            <p>Player 1: {scores[1]} wins</p>
+            <p>Player 2: {scores[2]} wins</p>
+         </div>
+         )}
+    </div>
+
+
+     <button className="toggle-theme" onClick={toggleTheme}>
         {isDark ? "☀️ Light Mode" : "🌙 Dark Mode"}
      </button>
-      <h1 className="game-title">Emoji Tic Tac Toe</h1>
 
+      <div className="game-container">
+      <h1 className="game-title">Emoji Tic Tac Toe</h1>
       {!gameStarted && (
         <div className="category-selection">
           <h2>Select Emoji Categories</h2>
@@ -185,6 +209,8 @@ function App() {
         </ul>
       </div>
     </div>
+  </div>
+
   );
 }
 
