@@ -27,4 +27,4 @@ https://tic-tac-toe-livid-chi.vercel.app/
 
 ```bash
 git clone https://github.com/komalpotdar17/tic-tac-toe.git
-cd emoji-tic-tac-toe
+cd tic-tac-toe
