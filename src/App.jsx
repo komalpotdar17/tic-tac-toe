@@ -19,6 +19,7 @@ function App() {
   const [placedEmojis, setPlacedEmojis] = useState({ 1: [], 2: [] });
   const [winner, setWinner] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
   const winningCombos = [
     [0, 1, 2],
@@ -32,9 +33,17 @@ function App() {
   ];
 
   useEffect(() => {
+  document.body.classList.toggle("dark-mode", isDark);
+  }, [isDark]);
+
+  useEffect(() => {
     checkWinner();
   }, [board]);
 
+  const toggleTheme = () => {
+  setIsDark(!isDark);
+  };
+  
   function startGame() {
     if (emojiSelections[1] && emojiSelections[2]) {
       setGameStarted(true);
@@ -93,16 +102,20 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div className={`app ${isDark ? "dark" : ""}`}>
+        <button className="toggle-theme" onClick={toggleTheme}>
+        {isDark ? "☀️ Light Mode" : "🌙 Dark Mode"}
+     </button>
       <h1>Emoji Tic Tac Toe</h1>
 
       {!gameStarted && (
         <div className="category-selection">
           <h2>Select Emoji Categories</h2>
           {[1, 2].map((player) => (
-            <div key={player}>
-              <label>Player {player}:</label>
+            <div key={player} className="player-select">
+              <label className="select-label">Player {player}:</label>
               <select
+                className="select-dropdown"
                 value={emojiSelections[player]}
                 onChange={(e) =>
                   setEmojiSelections({ ...emojiSelections, [player]: e.target.value })
@@ -115,7 +128,8 @@ function App() {
               </select>
             </div>
           ))}
-          <button onClick={startGame}>Start Game</button>
+          <br></br>
+          <button className="startButton" onClick={startGame}>Start Game</button>
         </div>
       )}
 

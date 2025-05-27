@@ -1,13 +1,47 @@
+:root {
+  --bg-light: linear-gradient(to right, #fcd6f6, #d6e4f7);
+  --bg-dark: #1e1e1e;
+  --text-light: black;
+  --text-dark: #f5f5f5;
+  --button-bg: #a42aa0;
+  --button-text: white;
+  --select-bg: #ffffff;
+  --select-text: #333;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #fcd6f6, #d6e4f7);
+  background: var(--bg-light);
   margin: 0;
   padding: 0;
-  color: black;
+  color: var(--text-light);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+.app.dark {
+  color: var(--text-dark);
+}
+
+.toggle-theme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .app {
@@ -79,6 +113,62 @@ body {
   color: black;
   border: 1px solid #dcbfff;
 }
+
+.startButton {
+  padding: 12px 24px;
+  background: linear-gradient(to right, #d6b2f1, #b2d6f1); /* matches your gradient */
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.startButton:hover {
+  background: linear-gradient(to right, #e4c8fa, #c8e4fa);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.startButton:active {
+  transform: scale(0.98);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.player-select {
+  margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  justify-content: center;
+}
+
+.select-dropdown {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 2px solid #c9a0ff;
+  font-size: 16px;
+  background: #f7f1ff;
+  color: #4a0072;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(200, 150, 255, 0.1);
+  cursor: pointer;
+}
+
+.select-dropdown:hover {
+  border-color: #a167ff;
+  box-shadow: 0 4px 14px rgba(160, 100, 255, 0.2);
+}
+
+.select-dropdown:focus {
+  outline: none;
+  border-color: #6a00ff;
+  box-shadow: 0 0 10px rgba(106, 0, 255, 0.4);
+}
+
 
 @media (max-width: 600px) {
   .board {
