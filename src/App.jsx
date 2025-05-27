@@ -125,7 +125,7 @@ function App() {
         <button className="toggle-theme" onClick={toggleTheme}>
         {isDark ? "☀️ Light Mode" : "🌙 Dark Mode"}
      </button>
-      <h1>Emoji Tic Tac Toe</h1>
+      <h1 className="game-title">Emoji Tic Tac Toe</h1>
 
       {!gameStarted && (
         <div className="category-selection">

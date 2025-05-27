@@ -7,6 +7,7 @@
   --button-text: white;
   --select-bg: #ffffff;
   --select-text: #333;
+  --title-color: #222; 
 }
 
 * {
@@ -25,6 +26,7 @@ body {
 body.dark-mode {
   background: var(--bg-dark);
   color: var(--text-dark);
+  --title-color: #f5f5f5;
 }
 
 .app.dark {
@@ -43,6 +45,19 @@ body.dark-mode {
   cursor: pointer;
   font-weight: bold;
 }
+
+.game-title {
+  font-size: 2.75rem;
+  text-align: center;
+  font-weight: 700;
+  margin: 1.5rem 0;
+  transition: color 0.3s ease;
+
+  /* Neutral color that works on both themes */
+  color: var(--title-color);
+}
+
+
 
 .app {
   text-align: center;
