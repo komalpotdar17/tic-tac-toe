@@ -12,7 +12,7 @@ A fun and interactive Tic Tac Toe game built with React where players place emoj
 
 ## Demo
 
-*Add a link here if deployed (e.g., on Vercel, Netlify)*
+https://tic-tac-toe-livid-chi.vercel.app/
 
 ## Getting Started
 
