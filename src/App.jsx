@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import './App.css';
 
 const emojiCategories = {
@@ -20,6 +20,9 @@ function App() {
   const [winner, setWinner] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const placeSoundRef = useRef(null);
+  const winSoundRef = useRef(null);
+
 
   const winningCombos = [
     [0, 1, 2],
@@ -31,6 +34,11 @@ function App() {
     [0, 4, 8],
     [2, 4, 6]
   ];
+
+  useEffect(() => {    
+    placeSoundRef.current = new Audio("/sounds/button-click.wav");
+    winSoundRef.current = new Audio("/sounds/winner.wav");
+  }, []);
 
   useEffect(() => {
   document.body.classList.toggle("dark-mode", isDark);
@@ -74,6 +82,12 @@ function App() {
     setBoard(newBoard);
     setPlacedEmojis({ ...placedEmojis, [currentPlayer]: playerEmojis });
     setPlayerTurn(currentPlayer === 1 ? 2 : 1);
+
+    
+    if (placeSoundRef.current) {
+      placeSoundRef.current.currentTime = 0; 
+      placeSoundRef.current.play();
+    }
   }
 
   function checkWinner() {
@@ -86,7 +100,12 @@ function App() {
         board[a].player === board[b].player &&
         board[b].player === board[c].player
       ) {
-        setWinner(board[a].player);
+        if (!winner) { 
+          setWinner(board[a].player);
+          if (winSoundRef.current) {
+            winSoundRef.current.play();
+          }
+        }
         return;
       }
     }
